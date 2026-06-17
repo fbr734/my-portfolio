@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nnabu-Okeke G. Francis | CV Portfolio</title>
+    <style>
+        /* CSS RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-dark: #0a0f1d;
+            --card-bg: rgba(18, 24, 43, 0.85);
+            --text-light: #ffffff;
+            --text-muted: #a0aec0;
+            --accent-blue: #0070f3;
+            --accent-glow: #38bdf8;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ANIMATED BACKGROUND */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: linear-gradient(135deg, #05050a 0%, #0a1128 100%);
+            overflow: hidden;
+        }
+
+        .animated-character {
+            position: absolute;
+            bottom: -50px;
+            right: 5%;
+            width: 45%;
+            height: 85%;
+            background: url('animated-avatar.png') no-repeat bottom right;
+            background-size: contain;
+            opacity: 0.25;
+            filter: drop-shadow(0 0 20px rgba(0, 112, 243, 0.3));
+            animation: floatCharacter 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatCharacter {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* CONTAINER LAYOUT */
+        .cv-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HEADER SECTION */
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--accent-glow);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--text-light);
+            text-decoration: underline;
+        }
+
+        /* SECTION STYLES */
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            margin-left: 15px;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent-blue), transparent);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* LISTS & ITEMS */
+        .cv-item {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .cv-item:hover {
+            transform: translateX(5px);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-weight: 600;
+        }
+
+        .item-sub {
+            color: var(--accent-glow);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .inline-link {
+            font-size: 0.85rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(56, 189, 248, 0.05);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .inline-link:hover {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
+
+        /* SKILLS STYLING */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .skills-subsection h3 {
+            font-size: 1.05rem;
+            color: var(--accent-glow);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            cursor: default;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: rgba(0, 112, 243, 0.15);
+            border-color: var(--accent-blue);
+            color: var(--text-light);
+            transform: translateY(-2px);
+        }
+
+        /* NEW CUSTOM CERTIFICATE IMAGES DESIGN */
+         .cert-image-container {
+            margin-top: 15px;
+            max-width: 100%; /* Keeps container bound inside the CV card */
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            background: #ffffff; /* Contrast background for paper documents */
+        }
+
+        .cert-image-container:hover {
+            transform: scale(1.01);
+            border-color: var(--accent-glow);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .cert-img {
+            width: 100%;
+            height: auto; /* Removes structural height caps so portrait files render fully */
+            display: block;
+            object-fit: contain; /* Protects original aspect ratio dimensions */
+        }
+
+        /* INTERACTIVE INTERFACE CONTROLS */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-blue);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .cv-container {
+                margin: 20px;
+                padding: 20px;
+            }
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            .animated-character {
+                width: 70%;
+                opacity: 0.15;
+            }
+            .item-header {
+                flex-direction: column;
+            }
+            .cert-image-container {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container">
+        <div class="animated-character"></div>
+    </div>
+
+    <button class="theme-toggle" id="interactBtn">Highlight Tech Skills</button>
+
+    <div class="cv-container">
+        
+        <!-- Header Section featuring updated GitHub link -->
+        <header>
+            <h1>Nnabu-Okeke Ginikachukwu Francis</h1>
+            <div class="contact-info">
+                <span>📧 <a href="mailto:nnabuokekekeginika@gmail.com">nnabuokekekeginika@gmail.com</a></span>
+                <span>📞 08121232996</span>
+                <span>🐙 <a href="https://github.com/" target="_blank">GitHub Profile</a></span>
+                <span>📍 Ogun State, Nigeria</span>
+            </div>
+        </header>
+
+        <section id="objective">
+            <h2>Objective</h2>
+            <p>An innovative and highly adaptable Computer Science student with a foundational background in healthcare analytics. Committed to leveraging technical skills, programmatic engineering logic, and proactive problem-solving to impact technical ecosystems while expanding my scope as a professional web developer.</p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>Bachelor of Computer Science</span>
+                    <span>Current</span>
+                </div>
+                <div class="item-sub">Babcock University, Ogun State</div>
+                <a href="https://www.babcock.edu.ng/" target="_blank" class="inline-link">Visit Babcock University Site →</a>
+            </div>
+
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>Doctor of Pharmacy (Completed 1 Year)</span>
+                    <span>Previous</span>
+                </div>
+                <div class="item-sub">Kwame Nkrumah University of Science and Technology</div>
+                <a href="https://www.knust.edu.gh/" target="_blank" class="inline-link">Visit KNUST Site →</a>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications & Educational Milestones</h2>
+            
+            <!-- TS Academy Track -->
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>TS Academy Certificate</span>
+                    <span>Certified: June 09, 2026</span>
+                </div>
+                <div class="item-sub">3 Months Training Programme in Software Development</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">Credential ID: TSH5BG7MUND43P</p>
+                <a href="#" target="_blank" class="inline-link">Verify on TS Academy Page →</a>
+                <div class="cert-image-container">
+                    <img src="ts-academy-cert.jpeg" alt="TS Academy Software Development Certificate" class="cert-img">
+                </div>
+            </div>
+
+            <!-- NVIDIA Track -->
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>NVIDIA Certificate of Competency</span>
+                    <span>Issued: January 25, 2026</span>
+                </div>
+                <div class="item-sub">Building RAG Agents with LLMs</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">Certification ID: 1s7b9Z_wTUSRfjJdU064qA</p>
+                <a href="https://learn.nvidia.com/" target="_blank" class="inline-link">Verify on NVIDIA Learning →</a>
+                <div class="cert-image-container">
+                    <img src="nvidia-cert.jpeg" alt="NVIDIA Building RAG Agents with LLMs Certificate" class="cert-img">
+                </div>
+            </div>
+
+            <!-- JUPEB Result (Linked to image_2.png) -->
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>JUPEB Statement of Result</span>
+                    <span>Examination Year: August 2025</span>
+                </div>
+                <div class="item-sub">Joint Universities Preliminary Examinations Board (A-Level Equivalent)</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">
+                    Babcock University Centre for Foundation Studies | Subjects: Chemistry, Mathematics, Physics
+                </p>
+                <div class="cert-image-container">
+                    <img src="jupeb.jpeg" alt="JUPEB Statement of Result" class="cert-img">
+                </div>
+            </div>
+
+            <!-- WAEC Certificate (Linked to image.png) -->
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>West African Senior School Certificate (WASSCE)</span>
+                    <span>Examination Year: 2023</span>
+                </div>
+                <div class="item-sub">The West African Examinations Council[span_1](start_span)[span_1](end_span)</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">
+                    Attended at Sacred Heart College, Apapa, Lagos | Distinction in Computer Studies[span_2](start_span)[span_2](end_span)
+                </p>
+                <div class="cert-image-container">
+                    <img src="waec.jpeg" alt="WASSCE Certificate" class="cert-img">
+                </div>
+            </div>
+
+            <!-- American Math Competition -->
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>American Mathematics Competition Certificate</span>
+                    <span>Academic Distinction</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>Pharmacy Intern</span>
+                    <span>Internship</span>
+                </div>
+                <div class="item-sub">Life Back Pharmacy Ltd</div>
+                <a href="#" target="_blank" class="inline-link">Company Link →</a>
+            </div>
+
+            <div class="cv-item">
+                <div class="item-header">
+                    <span>Enterprise Intern</span>
+                    <span>Internship</span>
+                </div>
+                <div class="item-sub">Slot Systems Limited</div>
+                <a href="https://slot.ng/" target="_blank" class="inline-link">Company Link →</a>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Qualities</h2>
+            <div class="skills-container">
+                
+                <div class="skills-subsection">
+                    <h3>Core Technical & Professional Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-badge tech-skill">HTML5</div>
+                        <div class="skill-badge tech-skill">CSS3</div>
+                        <div class="skill-badge tech-skill">JavaScript (Basic)</div>
+                        <div class="skill-badge">Responsive Web Design</div>
+                        <div class="skill-badge">Innovative Ideation</div>
+                        <div class="skill-badge">Strong Communication</div>
+                        <div class="skill-badge">Teamwork & Collaboration</div>
+                    </div>
+                </div>
+
+                <div class="skills-subsection">
+                    <h3>Personal Qualities & Values</h3>
+                    <div class="skills-grid">
+                        <div class="skill-badge">Strong Work Ethic</div>
+                        <div class="skill-badge">Willingness to Learn</div>
+                        <div class="skill-badge">Positive Attitude</div>
+                        <div class="skill-badge">Company/Industry Enthusiasm</div>
+                        <div class="skill-badge">High Flexibility</div>
+                        <div class="skill-badge">Adaptable in Fast-Paced Environments</div>
+                        <div class="skill-badge">Highly Approachable & Relatable</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT CONTROLS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const interactBtn = document.getElementById('interactBtn');
+            const techSkills = document.querySelectorAll('.tech-skill');
+            let highlighted = false;
+
+            interactBtn.addEventListener('click', () => {
+                highlighted = !highlighted;
+                
+                techSkills.forEach(skill => {
+                    if (highlighted) {
+                        skill.style.backgroundColor = 'var(--accent-blue)';
+                        skill.style.color = '#fff';
+                        skill.style.borderColor = 'var(--accent-glow)';
+                        skill.style.transform = 'scale(1.08)';
+                    } else {
+                        skill.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                        skill.style.color = 'var(--text-muted)';
+                        skill.style.borderColor = 'var(--border-color)';
+                        skill.style.transform = 'scale(1)';
+                    }
+                });
+
+                interactBtn.innerText = highlighted ? 'Reset View' : 'Highlight Tech Skills';
+            });
+        });
+    </script>
+</body>
+</html>
